@@ -11,17 +11,22 @@ import {
 export const Main = () => {
   // Inital state for isLogin is false
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
+  const [candidate, setCandidate] = useState([]);
   
 
+ 
+  
+  
   useEffect(() => {
     if (isLogin) {
       getCandidates().then((candidates) => {
-        console.log(candidates);
+        setCandidate(candidates)
       });
     }
   }, [isLogin]);
-  console.log(isLogin);
+  
   return (
+    
     <Router>
 
       {isLogin ? (
