@@ -1,14 +1,8 @@
-import { useEffect } from "react";
-import { x } from "./services/services";
+import React from "react";
+import { Main } from "./components/main_page/main_page";
 
 function App() {
-  useEffect(() => {
-    x().then((res) => {
-      console.log(res.accessToken);
-    });
-  });
-
-  return "AAAA";
+  return <Main />;
 }
 
 export default App;
