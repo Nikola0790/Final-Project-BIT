@@ -1,0 +1,10 @@
+.searchCandidate{
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
