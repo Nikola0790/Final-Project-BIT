@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
-//import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import { token } from "../../services/services";
 
-export const LoginForm = () => {
+export const LoginForm = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  //const history = useHistory();
-  /* const redirect = (event) => {
-    event.preventDefault();
-    history.push("/main"); 
-  }; */
 
   const takeEmail = (event) => {
     setEmail(event.target.value);
@@ -19,22 +13,19 @@ export const LoginForm = () => {
     setPass(event.target.value);
   };
 
-  const handleLogin = (event) => {
+  // Get email and password, save localStorage and set login to true
+  const onLogin = (event) => {
     event.preventDefault();
-  };
-
-  const onLogin = () => {
-    console.log("CAO");
     token(email, pass).then((tok) => {
       console.log(tok);
       localStorage.setItem("nameToken", tok);
-      //history.push("/main");
+      setIsLogin(true);
     });
   };
 
   return (
     <div className="container">
-      <form onSubmit={handleLogin}>
+      <form>
         <div className="row">
           <div className="col-12">
             <div className="form-group">
@@ -68,12 +59,7 @@ export const LoginForm = () => {
         </div>
         <div className="row">
           <div className="col-12">
-            <button
-              /* onClick={redirect} */
-              type="submit"
-              className="btn btn-primary"
-              onClick={onLogin}
-            >
+            <button type="submit" className="btn btn-primary" onClick={onLogin}>
               Submit
             </button>
           </div>

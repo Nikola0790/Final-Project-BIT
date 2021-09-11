@@ -1,6 +1,7 @@
 const urlToken = "http://localhost:3333/login";
 const urlCandidates = "http://localhost:3333/api/candidates";
 
+// POST method for geting token
 export const token = (email, pass) => {
   return fetch(urlToken, {
     method: "POST",
@@ -15,23 +16,9 @@ export const token = (email, pass) => {
     .then((res) => {
       return res.accessToken;
     });
-  /* .then(async (res) => {
-      return await fetch(urlCandidates, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${res}`,
-        },
-      })
-        .then((result) => {
-          return result.json();
-        })
-        .then((res) => {
-          console.log(res);
-          return res;
-        });
-    }); */
 };
 
+// GET method for list candidates
 export const getCandidates = async function getMeth() {
   let saveToken = localStorage.getItem("nameToken");
   return await fetch(urlCandidates, {
