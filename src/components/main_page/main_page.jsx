@@ -13,9 +13,6 @@ export const Main = () => {
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
   const [candidates, setCandidates] = useState([]);
 
- 
-  
-  
   useEffect(() => {
     if (isLogin) {
       getCandidates().then((candidates) => {
