@@ -24,7 +24,6 @@ export const Main = () => {
  
   return (
     <Router>
-
       {isLogin ? (
         <Switch>
           <Route exact path="/main" component={() => <Home setCandidates={candidates} />} />
