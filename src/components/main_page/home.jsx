@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { Candidates } from "../candidates/candidates";
-import { Footer } from "../footer/footer";
-import { Header } from "../header/header";
+import { Candidates } from "../partials/candidates/candidates";
+import { Footer } from "../partials/footer/footer";
+import { Header } from "../partials/header/header";
 
 const Home = () => {
   return (
