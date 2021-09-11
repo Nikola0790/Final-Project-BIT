@@ -6,11 +6,11 @@ import { Header } from "../partials/header/header";
 const Home = () => {
   return (
     <Fragment>
-  <Header/>
-  <Candidates/>
-  <Footer/>
-  </Fragment>
-  )
+      <Header />
+      <Candidates />
+      <Footer />
+    </Fragment>
+  );
 };
 
 export default Home;

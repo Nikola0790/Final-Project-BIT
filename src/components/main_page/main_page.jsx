@@ -11,7 +11,6 @@ import {
 export const Main = () => {
   // Inital state for isLogin is false
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
-  
 
   useEffect(() => {
     if (isLogin) {
@@ -23,7 +22,6 @@ export const Main = () => {
   console.log(isLogin);
   return (
     <Router>
-
       {isLogin ? (
         <Switch>
           <Route exact path="/main" component={Home} />
