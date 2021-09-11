@@ -19,12 +19,33 @@ const Home = (candidates) => {
     return result;
   })
 
+
+
   return (
     <Fragment>
-  <Header/>
-  <Search setSearch={setSearch}/>
-  <Candidates/>
-  <Footer/>
+      <Header/>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+
+              <div className="row">
+                <div className="col-12">
+                  <h4>Candidates</h4>
+                  <Search setSearch={setSearch}/>
+                  </div>
+              </div>
+              
+              <div className="row">
+                {candidates.map((candidate) => {
+                  return <Candidates items={candidate}/>
+                  })}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      <Footer/>
   </Fragment>
   )
 };

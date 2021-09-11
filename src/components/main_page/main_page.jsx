@@ -11,8 +11,7 @@ import {
 export const Main = () => {
   // Inital state for isLogin is false
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
-  const [candidate, setCandidate] = useState([]);
-  
+  const [candidates, setCandidates] = useState([]);
 
  
   
@@ -20,18 +19,18 @@ export const Main = () => {
   useEffect(() => {
     if (isLogin) {
       getCandidates().then((candidates) => {
-        setCandidate(candidates)
+        setCandidates(candidates);
+        console.log(candidates);
       });
     }
   }, [isLogin]);
-  
+ 
   return (
     
     <Router>
-
       {isLogin ? (
         <Switch>
-          <Route exact path="/main" component={Home} />
+          <Route exact path="/main" component={() => <Home setCandidates={candidates} />} />
           <Redirect from="/" to="/main" />
         </Switch>
       ) : (

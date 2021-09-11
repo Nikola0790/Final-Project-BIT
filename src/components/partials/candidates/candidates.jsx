@@ -1,10 +1,14 @@
-import React from "react";
-import { Search } from "../search_bar/searchBar";
+import React, { Fragment } from "react";
+import SingleCandidate from "../candidate_single/candidate_single"
 
-export const Candidates = () => {
+export const Candidates = ({items}) => {
+    console.log(items)
     return (
-        <h1>
-            <Search />
-        </h1>
+        <Fragment>
+            
+             <SingleCandidate candidate={items}  />
+        
+    </Fragment>
     )
 }
+export default Candidates

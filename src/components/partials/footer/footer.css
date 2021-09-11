@@ -3,3 +3,10 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.footer p{
+    text-align: center;
+}
+.footer{
+    
+    background-color:rgba(0, 0, 0, 0.2);
+}
