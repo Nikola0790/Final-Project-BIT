@@ -2,17 +2,14 @@ import React from "react";
 import "./footer.css"
 export const Footer = () => {
     return (
+    <footer className="fixed-bottom">
         <div className="container">
-            <div className="row">
+            <div className="row footer">
                 <div className="col-12">
-                    <footer className="fixed-bottom"
-
-                    >Student BIT 2021
-                    </footer>
+                    <p>Student BIT 2021</p>
                 </div>
             </div>
         </div>
-
+    </footer>
     )
-
 }

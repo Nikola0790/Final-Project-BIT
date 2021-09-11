@@ -1,0 +1,6 @@
+.card{
+    margin-bottom: 20px;
+}
+.card-body,h5,p{
+    text-align: left;
+}
