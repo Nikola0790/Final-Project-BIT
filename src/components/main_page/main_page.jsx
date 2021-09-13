@@ -29,8 +29,8 @@ export const Main = () => {
     <Router>
       {isLogin ? (
         <Switch>
+          <Route  exact path="/candidate_report/:id" component={CandidateReport}/>
           <Route exact path="/main" component={() => <Home setCandidates={candidates} />} />
-          <Route  exact path="/candidate_report" component={CandidateReport}/>
           <Redirect from="/" to="/main" />
         </Switch>
       ) : (

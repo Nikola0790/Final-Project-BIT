@@ -1,6 +1,7 @@
 import React from "react";
 import "./candidate_single.css"
 import {Link} from "react-router-dom";
+import { CandidateReport } from "../candidates_report/candidates_report";
 
 const SingleCandidate = ({candidate}) => {
 
@@ -9,7 +10,7 @@ const SingleCandidate = ({candidate}) => {
 
         <div className="card">
             <div className="round-img">
-                <Link to="/candidate_report" href="#">
+                <Link to={`/candidate_report/${candidate.id}`}  href="#">
                         <img className="card-img-top"class="rounded-circle"
                 src="https://via.placeholder.com/200/b3b3b3/FFFFFF/?text=Placeholder" alt="Card image cap"/>
                 </Link>

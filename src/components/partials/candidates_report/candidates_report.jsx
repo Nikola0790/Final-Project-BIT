@@ -1,26 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
+import { getCandidates } from "../../../services/services";
 
 
 
 
-export const CandidateReport = ({candidate}) => {
+export const CandidateReport = (props) => {
+    let id = props.match.params.id;
+    const [candidateInfo, setCandidateInfo] = useState ([]);
+    
+    useEffect(() => {
+        getCandidates().then((candidates) => {
+            setCandidateInfo(candidates);
+        }) 
+    }, []);
+    console.log(candidateInfo)
 
-    console.log(candidate);
-    // let day = new Date(candidate.birthday).getDate();
-    // let month = new Date(candidate.birthday).getMonth() + 1;
-    // let year = new Date(candidate.birthday).getFullYear();
-    // let dateOfBirth = `${day}-${month}-${year}`;
+    let candidateData = candidateInfo.filter((item)=>{
+        if(item.id === id) {
+            return item
+        }
+
+    })
+    let day = new Date(candidateData.birthday).getDate();
+    let month = new Date(candidateData.birthday).getMonth() + 1;
+    let year = new Date(candidateData.birthday).getFullYear();
+    let dateOfBirth = `${day}-${month}-${year}`;
     return (
-        <p>fdfdfdfd</p>
-        // <div>
-        //     <img src={candidate.avatar} alt="img of candidate" />
-        //     <div >
-        //         <h3>{candidate.name}</h3>
-        //         <h3>date of birth: {dateOfBirth}</h3>
-        //         <h3>email: {candidate.email}</h3>
-        //         <h3>education: {candidate.educataion}</h3>
-        //     </div>
-        // </div>
+        
+        <div>
+            <img src={candidateData.avatar} alt="img of candidate" />
+            <div >
+                <h3>{candidateData.name}</h3>
+                <h3>date of birth: {dateOfBirth}</h3>
+                <h3>email: {candidateData.email}</h3>
+                <h3>education: {candidateData.educataion}</h3>
+            </div>
+        </div>
     )
 }
 
