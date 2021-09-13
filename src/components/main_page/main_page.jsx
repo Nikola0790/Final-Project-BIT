@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LoginForm } from "../login_form/login";
 import { getCandidates } from "../../services/services";
-import {CandidateReport} from "../partials/candidates_report/candidates_report";
+import { CandidateReport } from "../partials/candidates_report/candidates_report";
 
 import Home from "./home";
 import {
@@ -19,18 +19,24 @@ export const Main = () => {
     if (isLogin) {
       getCandidates().then((candidates) => {
         setCandidates(candidates);
-
       });
     }
   }, [isLogin]);
- 
+
   return (
-    
     <Router>
       {isLogin ? (
         <Switch>
-          <Route  exact path="/candidate_report/:id" component={CandidateReport}/>
-          <Route exact path="/main" component={() => <Home setCandidates={candidates} />} />
+          <Route
+            exact
+            path="/candidate_report/:avatar/:name/:email/:education/:birthday"
+            component={CandidateReport}
+          />
+          <Route
+            exact
+            path="/main"
+            component={() => <Home setCandidates={candidates} />}
+          />
           <Redirect from="/" to="/main" />
         </Switch>
       ) : (
