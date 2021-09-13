@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { LoginForm } from "../login_form/login";
 import { getCandidates } from "../../services/services";
+import {CandidateReport} from "../partials/candidates_report/candidates_report";
+
 import Home from "./home";
 import {
   BrowserRouter as Router,
@@ -17,7 +19,7 @@ export const Main = () => {
     if (isLogin) {
       getCandidates().then((candidates) => {
         setCandidates(candidates);
-        console.log(candidates);
+
       });
     }
   }, [isLogin]);
@@ -28,6 +30,7 @@ export const Main = () => {
       {isLogin ? (
         <Switch>
           <Route exact path="/main" component={() => <Home setCandidates={candidates} />} />
+          <Route  exact path="/candidate_report" component={CandidateReport}/>
           <Redirect from="/" to="/main" />
         </Switch>
       ) : (

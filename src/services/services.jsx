@@ -27,7 +27,7 @@ export const getCandidates = async function getMeth() {
       Authorization: `Bearer ${saveToken}`,
     },
   }).then((result) => {
-    console.log(result);
+
     return result.json();
   });
 };
