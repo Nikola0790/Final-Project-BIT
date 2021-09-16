@@ -3,7 +3,6 @@ import { LoginForm } from "../login_form/login";
 import { getCandidates, getCandidate } from "../../services/services";
 import { CandidateReport } from "../partials/candidates_report/candidates_report";
 
-
 import Home from "./home";
 import {
   BrowserRouter as Router,
@@ -21,10 +20,9 @@ export const Main = () => {
     if (isLogin) {
       getCandidates().then((candidates) => {
         setCandidates(candidates);
-        console.log(candidates)
-      getCandidate().then((candidate)=>{
-        setCandidate(candidate)
-      })
+        /*  getCandidate().then((candidate) => {
+          setCandidate(candidate);
+        }); */
       });
     }
   }, [isLogin]);

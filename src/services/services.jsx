@@ -1,6 +1,6 @@
 const urlToken = "http://localhost:3333/login";
 const urlCandidates = "http://localhost:3333/api/candidates";
-
+const urlReports = "http://localhost:3333/api/reports";
 
 // POST method for geting token
 export const token = (email, pass) => {
@@ -28,11 +28,11 @@ export const getCandidates = async function getMeth() {
       Authorization: `Bearer ${saveToken}`,
     },
   }).then((result) => {
-
     return result.json();
   });
 };
 
+// GET method for one candidate
 export const getCandidate = async function getMeth(id) {
   let saveToken = localStorage.getItem("nameToken");
   return await fetch(`${urlCandidates}/${id}`, {
@@ -41,7 +41,19 @@ export const getCandidate = async function getMeth(id) {
       Authorization: `Bearer ${saveToken}`,
     },
   }).then((result) => {
+    return result.json();
+  });
+};
 
+// GET method for table reports
+export const getReport = async function getMeth() {
+  let saveToken = localStorage.getItem("nameToken");
+  return await fetch(`${urlReports}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${saveToken}`,
+    },
+  }).then((result) => {
     return result.json();
   });
 };

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-export const TableReport = ({ data }) => {
+export const TableReport = ({ dataReport }) => {
   return (
     <Fragment>
       <h3>Reports</h3>
@@ -13,13 +13,13 @@ export const TableReport = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => {
+          {dataReport.map((item) => {
             return (
               <tr>
                 <td>{item.companyName}</td>
                 <td>{item.interviewDate}</td>
                 <td>{item.status}</td>
-                <th scope="row">eye</th> {/* komponenta modal ili onClick */}
+                <th scope="row">eye</th>
               </tr>
             );
           })}
