@@ -8,8 +8,8 @@ const SingleCandidate = ({ candidate }) => {
       <div className="card">
         <div className="round-img">
           <Link
-            to={`/candidate_report/${candidate.avatar}/${candidate.name}/${candidate.email}/${candidate.education}/${candidate.birthday}`}
-            href="#"
+            to={`/candidate_report/${candidate.id}`}
+            
           >
             <img
               className="card-img-top"
