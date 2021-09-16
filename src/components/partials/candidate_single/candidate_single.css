@@ -1,0 +1,11 @@
+.card{
+    margin-bottom: 20px;
+    text-align: center
+}
+.round-img{
+    margin: 0px auto;
+    margin-top: 15px;
+}
+.rounded-circle{
+    border: 10px solid rgb(0, 0, 0);
+}

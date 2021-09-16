@@ -1,25 +1,35 @@
 export const Modal = ({ data }) => {
   return (
-    <div className="modal" tabIndex="-1" role="dialog">
-      <div className="modal-dialog" role="document">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">{data.name}</h5>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <div>
-              <p>info</p>
-            </div>
-            <div>
-              <p>Modal body text goes here.</p>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-3">
+          <button
+            type="button"
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#mymodal"
+          >
+            eye
+          </button>
+          <div className="modal fade" id="mymodal">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h3>A title for my modal</h3>
+                </div>
+                <div className="modal-body">
+                  <p>Some content goes in here</p>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-default"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

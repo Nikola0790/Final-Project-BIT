@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
+import SingleCandidate from "../candidate_single/candidate_single"
 
-export const Candidates = () => {
+
+export const Candidates = ({items}) => {
     return (
-        <h1>
-            NESTO
-        </h1>
+        <Fragment>
+             <SingleCandidate candidate={items}  />
+        </Fragment>
     )
 }
+export default Candidates

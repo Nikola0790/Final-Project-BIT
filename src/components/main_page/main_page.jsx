@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { LoginForm } from "../login_form/login";
-import { getCandidates } from "../../services/services";
+import { getCandidates, getCandidate } from "../../services/services";
+import { CandidateReport } from "../partials/candidates_report/candidates_report";
+
 import Home from "./home";
 import {
   BrowserRouter as Router,
@@ -11,22 +13,34 @@ import {
 export const Main = () => {
   // Inital state for isLogin is false
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
-  
+  const [candidates, setCandidates] = useState([]);
+  const [candidate, setCandidate] = useState("");
 
   useEffect(() => {
     if (isLogin) {
       getCandidates().then((candidates) => {
-        console.log(candidates);
+        setCandidates(candidates);
+        /*  getCandidate().then((candidate) => {
+          setCandidate(candidate);
+        }); */
       });
     }
   }, [isLogin]);
-  console.log(isLogin);
+
   return (
     <Router>
-
       {isLogin ? (
         <Switch>
-          <Route exact path="/main" component={Home} />
+          <Route
+            exact
+            path="/candidate_report/:id"
+            component={CandidateReport}
+          />
+          <Route
+            exact
+            path="/main"
+            component={() => <Home setCandidates={candidates} />}
+          />
           <Redirect from="/" to="/main" />
         </Switch>
       ) : (
