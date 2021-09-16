@@ -1,4 +1,5 @@
 export const Modal = ({ data }) => {
+  console.log(data);
   return (
     <div className="container">
       <div className="row">
@@ -15,7 +16,7 @@ export const Modal = ({ data }) => {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h3>A title for my modal</h3>
+                  <h3></h3>
                 </div>
                 <div className="modal-body">
                   <p>Some content goes in here</p>

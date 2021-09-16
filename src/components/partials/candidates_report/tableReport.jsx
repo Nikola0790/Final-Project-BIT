@@ -21,7 +21,7 @@ export const TableReport = ({ dataReport }) => {
                 <td>{item.interviewDate}</td>
                 <td>{item.status}</td>
                 <th scope="row">
-                  <Modal />
+                  <Modal data={dataReport} />
                 </th>
               </tr>
             );

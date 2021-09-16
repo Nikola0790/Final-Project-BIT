@@ -6,7 +6,7 @@ import { Search } from "../partials/search_bar/searchBar";
 import "./home.css";
 
 const Home = ({ candidates, setCandidates }) => {
-  //const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
 
   // candidates.filter((candidates) => {
   //   let result = null
