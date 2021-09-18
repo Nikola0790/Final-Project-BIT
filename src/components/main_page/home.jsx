@@ -6,7 +6,7 @@ import { Search } from "../partials/search_bar/searchBar";
 import { getCandidates } from "../../services/services";
 import "./home.css";
 
-const Home = ({ setCandidates }) => {
+const Home = ({ setCandidates, setIsLogin }) => {
   const [search, setSearch] = useState("");
   const [candid, setCandid] = useState([]);
 
@@ -35,7 +35,7 @@ const Home = ({ setCandidates }) => {
   
     return (
       <Fragment>
-        <Header />
+        <Header  setIsLogin={setIsLogin}/>
 
         <div className="container">
           <div className="row">

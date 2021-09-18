@@ -44,7 +44,7 @@ export const Main = () => {
           <Route
             exact
             path="/main"
-            component={() => <Home setCandidates={candidates} />}
+            component={() => <Home setCandidates={candidates} setIsLogin={setIsLogin} />}
           />
           <Redirect from="/" to="/main" />
         </Switch>

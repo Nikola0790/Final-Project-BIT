@@ -14,7 +14,7 @@ const SingleCandidate = ({ candidate }) => {
             <img
               className="card-img-top"
 
-              class="img-fluid"
+              className="img-fluid"
               src="https://via.placeholder.com/200/b3b3b3/FFFFFF/?text=Placeholder"
               alt="Card cap"
             />

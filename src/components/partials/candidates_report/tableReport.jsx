@@ -14,7 +14,7 @@ export const TableReport = ({ dataReport, interviewDate}) => {
         </div>
         <div className="row">
           <div className="col-12">
-            <table class="table table-striped">
+            <table className="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">Company</th>

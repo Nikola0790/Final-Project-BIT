@@ -2,7 +2,11 @@ import React from "react";
 import "./header.css"
 import {Link} from "react-router-dom";
 
-export const Header = () =>{
+export const Header = ({setIsLogin}) =>{
+  const logout = () => {
+    localStorage.clear();
+    setIsLogin(false);
+  }
     return (
       <header>
         <div className="container">
@@ -15,7 +19,8 @@ export const Header = () =>{
                       </h1>
                     <Link className="navbar-brand" to="/main">
                       Candidates </Link>
-                    
+                      <Link className="navbar-brand" to="/login" onClick={logout}>
+                      Logout </Link>
                  
                 </nav>
               </div>
