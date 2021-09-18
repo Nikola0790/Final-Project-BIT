@@ -1,5 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
-import { getCandidate, getReport } from "../../../services/services";
+import { getBirthDate, getCandidate, getReport } from "../../../services/services";
 import { TableReport } from "./tableReport";
 import {Header} from "../header/header"
 import "./candidates_report.css"
@@ -11,11 +11,15 @@ export const CandidateReport = (props) => {
 
   const [candidateInfo, setCandidateInfo] = useState([]);
   const [candidateReport, setCandidateReport] = useState([]);
+  const [birthDate, setBirthDate] = useState('');
 
   useEffect(() => {
     getCandidate(idCandidate).then((item) => {
       setCandidateInfo(item);
     });
+    getBirthDate(idCandidate).then((item) => {
+      setBirthDate(item);
+    })
   }, []);
 
   useEffect(() => {
@@ -30,10 +34,6 @@ export const CandidateReport = (props) => {
     }
   });
 
-  let day = new Date(candidateInfo.birthday).getDate();
-  let month = new Date(candidateInfo.birthday).getMonth() + 1;
-  let year = new Date(candidateInfo.birthday).getFullYear();
-  let dateOfBirth = `${day}-${month}-${year}`;
   return (
     <Fragment>
       <Header/>
@@ -50,7 +50,7 @@ export const CandidateReport = (props) => {
               </div>
               <div className="col-md-5 col-sm-12">
               <p className="infoQuestion">Date of birth:</p>
-              <p className="infoAnswer">{dateOfBirth}</p>
+              <p className="infoAnswer">{birthDate}</p>
               </div>
             </div>
             <div className="row">

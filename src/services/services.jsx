@@ -15,6 +15,7 @@ export const token = (email, pass) => {
       return res.json();
     })
     .then((res) => {
+      
       return res.accessToken;
     });
 };
@@ -28,6 +29,7 @@ export const getCandidates = async function getMeth() {
       Authorization: `Bearer ${saveToken}`,
     },
   }).then((result) => {
+    
     return result.json();
   });
 };
@@ -56,4 +58,26 @@ export const getReport = async function getMeth() {
   }).then((result) => {
     return result.json();
   });
+};
+
+
+// date birthday formated 
+
+export const getBirthDate = async function getMeth(id) {
+  let saveToken = localStorage.getItem("nameToken");
+  return await fetch(`${urlCandidates}/${id}`, {
+  
+    headers: {
+      Authorization: `Bearer ${saveToken}`,
+    },
+  }).then((result) => {
+    return result.json();
+  }).then((result)=>{
+    let day = new Date(result.birthday).getDate();
+    let month = new Date(result.birthday).getMonth() + 1;
+    let year = new Date(result.birthday).getFullYear();
+    let dateOfBirth = `${day}-${month}-${year}`;
+    return dateOfBirth;
+  }
+  )
 };
