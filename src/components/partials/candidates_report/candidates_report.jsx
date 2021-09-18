@@ -1,5 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
-import { getBirthDate, getCandidate, getReport } from "../../../services/services";
+import { getBirthDate, getCandidate, getInterviewDate, getReport } from "../../../services/services";
 import { TableReport } from "./tableReport";
 import {Header} from "../header/header"
 import "./candidates_report.css"
@@ -12,6 +12,7 @@ export const CandidateReport = (props) => {
   const [candidateInfo, setCandidateInfo] = useState([]);
   const [candidateReport, setCandidateReport] = useState([]);
   const [birthDate, setBirthDate] = useState('');
+  const [interviewDate, setInterviewDate] = useState([])
 
   useEffect(() => {
     getCandidate(idCandidate).then((item) => {
@@ -26,6 +27,10 @@ export const CandidateReport = (props) => {
     getReport().then((item) => {
       setCandidateReport(item);
     });
+    getInterviewDate(idCandidate).then((item) =>{
+     
+      setInterviewDate(item);
+    })
   }, []);
 
   let singleReport = candidateReport.filter((report) => {
@@ -65,7 +70,7 @@ export const CandidateReport = (props) => {
             </div>
           </div>
         </div>
-        <TableReport dataReport={singleReport} />
+        <TableReport dataReport={singleReport} interviewDate={interviewDate} />
       </div>
       <Footer/>
     </Fragment>

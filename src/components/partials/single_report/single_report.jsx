@@ -1,9 +1,6 @@
 import "./single_report.css";
-export const Modal = ({ data, index }) => {
-  let day = new Date(data.interviewDate).getDate();
-  let month = new Date(data.interviewDate).getMonth() + 1;
-  let year = new Date(data.interviewDate).getFullYear();
-  let dateInterview = `${day}.${month}.${year}`;
+export const Modal = ({ data, index, interviewDate }) => {
+ 
   return (
     <div className="container">
       <div className="row">
@@ -38,7 +35,7 @@ export const Modal = ({ data, index }) => {
                             <p className="question"> Interview date</p>
                           </div>
                           <div className="col-12">
-                            <p className="answer">{dateInterview}</p>
+                            <p className="answer">{interviewDate}</p>
                           </div>
                         </div>
                         <div className="row">

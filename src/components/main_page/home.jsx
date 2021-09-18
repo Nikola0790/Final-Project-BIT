@@ -31,7 +31,7 @@ const Home = ({ setCandidates }) => {
     return result;
   })
 
-  console.log(candidateSearchTerm)
+  
   
     return (
       <Fragment>

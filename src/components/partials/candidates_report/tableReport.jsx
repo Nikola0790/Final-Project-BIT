@@ -2,8 +2,8 @@ import { Fragment } from "react";
 import { Modal } from "../single_report/single_report";
 import "./tableReport.css";
 
-export const TableReport = ({ dataReport }) => {
-  console.log(dataReport);
+export const TableReport = ({ dataReport, interviewDate}) => {
+  
   return (
     <Fragment>
       <div className="container">
@@ -26,17 +26,15 @@ export const TableReport = ({ dataReport }) => {
               </thead>
               <tbody>
                 {dataReport.map((item, index) => {
-                  let day = new Date(item.interviewDate).getDate();
-                  let month = new Date(item.interviewDate).getMonth() + 1;
-                  let year = new Date(item.interviewDate).getFullYear();
-                  let dateOfBirth = `${day}.${month}.${year}`;
+               
                   return (
                     <tr>
                       <td>{item.companyName}</td>
-                      <td>{dateOfBirth}</td>
+                      <td>{interviewDate[index]}</td>
                       <td>{item.status}</td>
-                      <th scope="row">
-                        <Modal data={item} index={index} />
+                      <th scope="row" width= "10%">
+                        <Modal data={item} index={index} interviewDate={interviewDate[index]} />
+
                       </th>
                     </tr>
                   );
