@@ -1,0 +1,18 @@
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.question {
+  color: #929292;
+  margin: 0;
+}
+.answer {
+  font-size: 22px;
+  font-weight: normal;
+  color: black !important;
+}
+.note {
+  font-weight: normal;
+  color: black !important;
+}

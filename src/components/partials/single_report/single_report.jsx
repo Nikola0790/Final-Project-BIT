@@ -1,14 +1,15 @@
+import "./single_report.css";
 export const Modal = ({ data, index }) => {
-  let split = data.interviewDate.split(" ", 6);
-  console.log(split);
-  let date = `${split[2]}.${split[1]}.${split[3]}`;
+  let day = new Date(data.interviewDate).getDate();
+  let month = new Date(data.interviewDate).getMonth() + 1;
+  let year = new Date(data.interviewDate).getFullYear();
+  let dateInterview = `${day}.${month}.${year}`;
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-3">
           <button
             type="button"
-            className="btn btn-primary"
             data-toggle="modal"
             data-target={`#mymodal${index}`}
           >
@@ -25,25 +26,47 @@ export const Modal = ({ data, index }) => {
                     <div className="row">
                       <div className="col-4">
                         <div className="row">
-                          <p>Company</p>
-                          <p>{data.companyName}</p>
+                          <div className="col-12">
+                            <p className="question">Company</p>
+                          </div>
+                          <div className="col-12 ">
+                            <p className="answer">{data.companyName}</p>
+                          </div>
                         </div>
                         <div className="row">
-                          <p>Interview date</p>
-                          <p>{date}</p>
+                          <div className="col-12">
+                            <p className="question"> Interview date</p>
+                          </div>
+                          <div className="col-12">
+                            <p className="answer">{dateInterview}</p>
+                          </div>
                         </div>
                         <div className="row">
-                          <p>Phase</p>
-                          <p>{data.phase}</p>
+                          <div className="col-12">
+                            <p className="question">Phase</p>
+                          </div>
+                          <div className="col-12">
+                            <p className="answer">{data.phase}</p>
+                          </div>
                         </div>
                         <div className="row">
-                          <p>Status</p>
-                          <p>{data.status}</p>
+                          <div className="col-12">
+                            <p className="question">Status</p>
+                          </div>
+                          <div className="col-12">
+                            <p className="answer">{data.status}</p>
+                          </div>
                         </div>
                       </div>
                       <div className="col-8">
-                        <p>Notes</p>
-                        <p>{data.note}</p>
+                        <div className="row">
+                          <div className="col-12">
+                            <p className="question">Notes</p>
+                          </div>
+                          <div className="col-12">
+                            <p className="note">{data.note}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
