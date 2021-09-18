@@ -13,18 +13,18 @@ export const LoginForm = ({ setIsLogin }) => {
     setPass(event.target.value);
   };
 
-  // Get email and password, save localStorage and set login to true
+  // Validation for email and password, save localStorage and set login to true
   const onLogin = (event) => {
     event.preventDefault();
-    if(email === "" || pass === "" ){
-      alert("Please enter a valid email and password")
+    if (email === "" || pass === "") {
+      alert("Please enter a valid email and password");
     }
 
-    token(email, pass).then((tok) => {
-      if(tok === undefined){
-        alert("Please enter a valid email and password")
+    token(email, pass).then((item) => {
+      if (item === undefined) {
+        alert("Please enter a valid email and password");
       }
-      localStorage.setItem("nameToken", tok);
+      localStorage.setItem("nameToken", item);
       setIsLogin(true);
     });
   };

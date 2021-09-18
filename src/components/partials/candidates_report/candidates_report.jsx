@@ -1,11 +1,15 @@
 import { useEffect, useState, Fragment } from "react";
-import { getBirthDate, getCandidate, getInterviewDate, getReport } from "../../../services/services";
+import {
+  getBirthDate,
+  getCandidate,
+  getInterviewDate,
+  getReport,
+} from "../../../services/services";
 import { TableReport } from "./tableReport";
 
-import "./candidates_report.css"
+import "./candidates_report.css";
 
-
-
+// Creating candidate info
 export const CandidateReport = (props) => {
   let idCandidate = props.match.params.id;
   let avatar =
@@ -13,28 +17,32 @@ export const CandidateReport = (props) => {
 
   const [candidateInfo, setCandidateInfo] = useState([]);
   const [candidateReport, setCandidateReport] = useState([]);
-  const [birthDate, setBirthDate] = useState('');
-  const [interviewDate, setInterviewDate] = useState([])
+  const [birthDate, setBirthDate] = useState("");
+  const [interviewDate, setInterviewDate] = useState([]);
 
   useEffect(() => {
+    // getting single candidate via id
     getCandidate(idCandidate).then((item) => {
       setCandidateInfo(item);
     });
+    // getting formated birthday
     getBirthDate(idCandidate).then((item) => {
       setBirthDate(item);
-    })
+    });
   }, []);
 
   useEffect(() => {
+    // getting report for all candidates
     getReport().then((item) => {
       setCandidateReport(item);
     });
+    // getting formated interview date
     getInterviewDate(idCandidate).then((item) => {
-
       setInterviewDate(item);
-    })
+    });
   }, []);
 
+  // filtering data for selected candidate
   let singleReport = candidateReport.filter((report) => {
     if (parseInt(idCandidate) === report.candidateId) {
       return report;
@@ -46,7 +54,11 @@ export const CandidateReport = (props) => {
       <div className="container">
         <div className="row candidate">
           <div className="col-lg-4 col-md-12 candidateImage">
-            <img src={avatar} className="img-thumbnail" alt="img of candidate" />
+            <img
+              src={avatar}
+              className="img-thumbnail"
+              alt="img of candidate"
+            />
           </div>
           <div className="col-lg-8 col-md-12 candidateInfo">
             <div className="row">
@@ -71,9 +83,12 @@ export const CandidateReport = (props) => {
             </div>
           </div>
         </div>
-        <TableReport dataReport={singleReport} interviewDate={interviewDate} />
+        {/* sending data to TableReport */}
+        <TableReport
+          singleReport={singleReport}
+          interviewDate={interviewDate}
+        />
       </div>
-
     </Fragment>
   );
 };

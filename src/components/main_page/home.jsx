@@ -1,39 +1,26 @@
-import { Fragment, useState, useEffect } from "react";
-import Candidates from "../partials/candidates/candidates";
+import { Fragment, useState } from "react";
+import SingleCandidates from "../partials/candidate_single/candidate_single";
 import { Search } from "../partials/search_bar/searchBar";
-import { getCandidates } from "../../services/services";
 import "./home.css";
 
-const Home = ({ setCandidates }) => {
+const Home = ({ candidates }) => {
   const [search, setSearch] = useState("");
-  const [candid, setCandid] = useState([]);
 
-  useEffect(() => {
-    getCandidates().then((candidates) => {
-      setCandid(candidates);
-    });
-  }
-    , [setCandidates]);
-
-
-  let candidateSearchTerm = candid.filter((searchItem) => {
-    let result = null
+  // Search field
+  let candidateSearchTerm = candidates.filter((searchItem) => {
+    let result = null;
 
     if (search === "") {
       result = searchItem;
-    } else if (searchItem.name.toLowerCase().includes(search.toLowerCase())
-    ) {
+    } else if (searchItem.name.toLowerCase().includes(search.toLowerCase())) {
       result = searchItem;
     }
 
     return result;
-  })
-
-
+  });
 
   return (
     <Fragment>
-
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -43,23 +30,20 @@ const Home = ({ setCandidates }) => {
               </div>
               <div className="col-md-6 search">
                 <Search setSearch={setSearch} />
+                {/* send setSearch to Search for taking input value from search bar */}
               </div>
-
-
             </div>
             <hr />
-
             <div className="row">
               {candidateSearchTerm.map((candidates, index) => {
-                return <Candidates items={candidates} key={index} />;
+                return <SingleCandidates candidate={candidates} key={index} />; // sending data for all candidates or for searched candidates
               })}
             </div>
           </div>
         </div>
       </div>
-
     </Fragment>
-  )
+  );
 };
 
 export default Home;

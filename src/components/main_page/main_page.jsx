@@ -3,7 +3,6 @@ import { LoginForm } from "../login_form/login";
 import { getCandidates } from "../../services/services";
 import { CandidateReport } from "../partials/candidates_report/candidates_report";
 import { Footer } from "../partials/footer/footer";
-
 import Home from "./home";
 import {
   BrowserRouter as Router,
@@ -12,48 +11,49 @@ import {
   Redirect,
 } from "react-router-dom";
 import { Header } from "../partials/header/header";
+
 export const Main = () => {
-  // Inital state for isLogin is false
-  const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
+  const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken")); // Inital state for isLogin is false
   const [candidates, setCandidates] = useState([]);
 
+  // Getting data from api if it's login
   useEffect(() => {
     if (isLogin) {
-      
       getCandidates().then((candidates) => {
-        if (candidates === 'jwt expired' || localStorage.getItem("nameToken")=== 'undefined') {
+        if (
+          candidates === "jwt expired" || //  checking if token is expired
+          localStorage.getItem("nameToken") === "undefined" // or undefined
+        ) {
           localStorage.clear();
-          setIsLogin(!!localStorage.getItem('nameToken'))  
+          setIsLogin(!!localStorage.getItem("nameToken"));
         } else {
-          setCandidates(candidates);
+          setCandidates(candidates); // set data for all candidates
         }
-
-      })
+      });
     }
   }, [isLogin]);
 
-
-
   return (
     <Router>
-      {(isLogin && localStorage.getItem("nameToken")!== 'undefined')  ? (
-        <><Header setIsLogin={setIsLogin} /><Switch>
-          <Route
-            exact
-            path="/candidate_report/:id"
-            component={CandidateReport}
-          />
-            
-          <Route
-            exact
-            path="/main"
-            component={() => <Home setCandidates={candidates} setIsLogin={setIsLogin} />} />
-          <Redirect from="/" to="/main" />
-          
-        </Switch>
-        <Footer/></>
-        
-      ) : ( 
+      {isLogin && localStorage.getItem("nameToken") !== "undefined" ? ( // isLogin is true and token is valid
+        <>
+          <Header setIsLogin={setIsLogin} />
+          <Switch>
+            <Route // send setIsLogin to Header and on click change set isLogin to true
+              exact
+              path="/candidate_report/:id" // on click on picture in cadidate_single.jsx getting id and sending via props.match... to component CandidateReport
+              component={CandidateReport}
+            />
+            <Route
+              exact
+              path="/main"
+              component={() => <Home candidates={candidates} />} // send all candidates to Home
+            />
+            <Redirect from="/" to="/main" />
+          </Switch>
+          <Footer />
+        </>
+      ) : (
         <Switch>
           <Route
             exact
@@ -63,7 +63,6 @@ export const Main = () => {
           <Redirect from="/" to="/login" />
         </Switch>
       )}
-      
     </Router>
   );
 };

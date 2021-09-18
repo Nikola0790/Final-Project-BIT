@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import { Modal } from "../single_report/single_report";
+import { Modal } from "../modal/modal";
 import "./tableReport.css";
 
-export const TableReport = ({ dataReport, interviewDate}) => {
-  
+// create info table for single candidate
+export const TableReport = ({ singleReport, interviewDate }) => {
   return (
     <Fragment>
       <div className="container">
@@ -25,16 +25,19 @@ export const TableReport = ({ dataReport, interviewDate}) => {
                 </tr>
               </thead>
               <tbody>
-                {dataReport.map((item, index) => {
-               
+                {singleReport.map((item, index) => {
+                  // getting data from singleReport
                   return (
                     <tr>
                       <td>{item.companyName}</td>
                       <td>{interviewDate[index]}</td>
                       <td>{item.status}</td>
-                      <th scope="row" width= "10%">
-                        <Modal data={item} index={index} interviewDate={interviewDate[index]} />
-
+                      <th scope="row" width="10%">
+                        <Modal // additional info for selected interview
+                          data={item}
+                          index={index}
+                          interviewDate={interviewDate[index]}
+                        />
                       </th>
                     </tr>
                   );

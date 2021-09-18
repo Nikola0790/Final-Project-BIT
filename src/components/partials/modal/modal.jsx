@@ -1,6 +1,5 @@
-import "./single_report.css";
+import "./modal.css";
 export const Modal = ({ data, index, interviewDate }) => {
- 
   return (
     <div className="container">
       <div className="row">
@@ -8,7 +7,7 @@ export const Modal = ({ data, index, interviewDate }) => {
           <button
             type="button"
             data-toggle="modal"
-            data-target={`#mymodal${index}`}
+            data-target={`#mymodal${index}`} // data-target must match with id
           >
             <i className="material-icons"> visibility </i>
           </button>
