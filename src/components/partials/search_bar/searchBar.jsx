@@ -3,15 +3,18 @@ import './searchBar.css';
 
 export const Search = ({setSearch}) => (
     <div className='search'>
-        <span className="material-icons">search</span>
+        <div className="searchBox " >
+        <div className="material-icons searchIcon ">search</div>
 
         <input placeholder="Search..."
             type="text"
+            className="searchInput"
+            
             onChange={(event) => {
                 setSearch(event.target.value)
             }}
         ></input>
-
+        </div>
     </div>
 
 )

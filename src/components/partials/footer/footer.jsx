@@ -9,9 +9,10 @@ export const Footer = () => {
         //         </div>
         //     </div>
         //     </footer>
-    <footer >
+
+    <footer className="footer" >
         <div className="container">
-            <div className="row footer">
+            <div className="row ">
                 <div className="col-12">
                     <p>Student BIT © 2021 Copyright</p>
                 </div>

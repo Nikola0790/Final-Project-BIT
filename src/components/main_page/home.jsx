@@ -6,65 +6,73 @@ import { Search } from "../partials/search_bar/searchBar";
 import { getCandidates } from "../../services/services";
 import "./home.css";
 
-const Home = ({ candidates, setCandidates}) => {
-  const [search, setSearch] = useState ("");
-  const [candid,setCandid] = useState ([]);
+const Home = ({ candidates, setCandidates }) => {
+  const [search, setSearch] = useState("");
+  const [candid, setCandid] = useState([]);
 
   useEffect(() => {
-      getCandidates().then((candidates) => {
-        setCandid(candidates);
-      });
-    }
-  , [setCandidates]);
- 
+    getCandidates().then((candidates) => {
+      setCandid(candidates);
+    });
+  }
+    , [setCandidates]);
+
 
   let candidateSearchTerm = candid.filter((searchItem) => {
     let result = null
-    
+
     if (search === "") {
       result = searchItem;
     } else if (searchItem.name.toLowerCase().includes(search.toLowerCase())
     ) {
       result = searchItem;
     }
-    
+
     return result;
   })
-  
-console.log(candidateSearchTerm)
-if (search === "") {
-  return (
-    <Fragment>
-      <Header />
 
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <div className="row searchCandidate">
-              <div className="col-md-6">
-                <h4>Candidates</h4>
-              </div>
-              <div className="col-md-6 search">
-                <Search setSearch={setSearch} />
-              </div>
-            </div>
+  console.log(candidateSearchTerm)
+  if (search === "") {
+    return (
+      <Fragment>
+        <Header />
 
-            <div className="row">
-              {setCandidates.map((candidates, index) => {
-                return <Candidates items={candidates} key={index} />;
-              })}
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="row searchCandidate">
+                <div className="col-md-6 ">
+                  <p>Candidates</p>
+                </div>
+                <div className="col-md-6  search">
+                  <Search setSearch={setSearch} />
+                </div>
+                <hr />
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <hr />
+                </div>
+              </div>
+
+
+              <div className="row">
+                {setCandidates.map((candidates, index) => {
+                  return <Candidates items={candidates} key={index} />;
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
-    </Fragment>
-  )}
+        <Footer />
+      </Fragment>
+    )
+  }
   else {
     return (
       <Fragment>
         <Header />
-  
+
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -76,11 +84,11 @@ if (search === "") {
                   <Search setSearch={setSearch} />
                 </div>
               </div>
-  
+
               <div className="row">
-              {candidateSearchTerm.map((candidates, index) => {
-                return <Candidates items={candidates} key={index} />;
-              })}
+                {candidateSearchTerm.map((candidates, index) => {
+                  return <Candidates items={candidates} key={index} />;
+                })}
               </div>
             </div>
           </div>

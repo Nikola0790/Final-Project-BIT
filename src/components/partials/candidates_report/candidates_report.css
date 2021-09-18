@@ -1,0 +1,14 @@
+.candidate{
+    margin:20px 0px;
+}
+
+.infoQuestion{
+    color: #929292;
+    font-size: 18px;
+}
+.infoAnswer{
+    color: black;
+    font-size: 24px;
+    padding: 10x;
+    margin-left: 20px;
+}

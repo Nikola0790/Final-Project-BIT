@@ -1,0 +1,26 @@
+.searchBox{
+    border: 1px solid black;
+    border-radius: 25px;
+
+}
+
+.searchBox{
+    float:right;
+
+}
+.searchInput{
+    border: none !important;;
+    margin-right: 10px !important;
+    
+}
+.searchInput:focus{
+    border: none !important;;
+    outline: none !important;
+    width: auto !important;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .searchBox{
+      float:none;
+    }
+  }
