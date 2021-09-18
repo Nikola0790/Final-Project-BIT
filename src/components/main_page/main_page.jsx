@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LoginForm } from "../login_form/login";
 import { getCandidates } from "../../services/services";
 import { CandidateReport } from "../partials/candidates_report/candidates_report";
+import { Footer } from "../partials/footer/footer";
 
 import Home from "./home";
 import {
@@ -10,6 +11,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { Header } from "../partials/header/header";
 export const Main = () => {
   // Inital state for isLogin is false
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("nameToken"));
@@ -35,19 +37,22 @@ export const Main = () => {
   return (
     <Router>
       {(isLogin && localStorage.getItem("nameToken")!== 'undefined')  ? (
-        <Switch>
+        <><Header setIsLogin={setIsLogin} /><Switch>
           <Route
             exact
             path="/candidate_report/:id"
             component={CandidateReport}
           />
+            
           <Route
             exact
             path="/main"
-            component={() => <Home setCandidates={candidates} setIsLogin={setIsLogin} />}
-          />
+            component={() => <Home setCandidates={candidates} setIsLogin={setIsLogin} />} />
           <Redirect from="/" to="/main" />
+          
         </Switch>
+        <Footer/></>
+        
       ) : ( 
         <Switch>
           <Route
@@ -58,6 +63,7 @@ export const Main = () => {
           <Redirect from="/" to="/login" />
         </Switch>
       )}
+      
     </Router>
   );
 };

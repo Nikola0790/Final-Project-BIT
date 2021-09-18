@@ -1,9 +1,11 @@
 import { useEffect, useState, Fragment } from "react";
 import { getBirthDate, getCandidate, getInterviewDate, getReport } from "../../../services/services";
 import { TableReport } from "./tableReport";
-import {Header} from "../header/header"
+
 import "./candidates_report.css"
-import {Footer} from "../footer/footer"
+
+
+
 export const CandidateReport = (props) => {
   let idCandidate = props.match.params.id;
   let avatar =
@@ -27,8 +29,8 @@ export const CandidateReport = (props) => {
     getReport().then((item) => {
       setCandidateReport(item);
     });
-    getInterviewDate(idCandidate).then((item) =>{
-     
+    getInterviewDate(idCandidate).then((item) => {
+
       setInterviewDate(item);
     })
   }, []);
@@ -41,7 +43,6 @@ export const CandidateReport = (props) => {
 
   return (
     <Fragment>
-      <Header/>
       <div className="container">
         <div className="row candidate">
           <div className="col-lg-4 col-md-12 candidateImage">
@@ -50,29 +51,29 @@ export const CandidateReport = (props) => {
           <div className="col-lg-8 col-md-12 candidateInfo">
             <div className="row">
               <div className="col-md-7 col-sm-12">
-              <p className="infoQuestion">Name:</p>
-              <p className="infoAnswer">{candidateInfo.name}</p>
+                <p className="infoQuestion">Name:</p>
+                <p className="infoAnswer">{candidateInfo.name}</p>
               </div>
               <div className="col-md-5 col-sm-12">
-              <p className="infoQuestion">Date of birth:</p>
-              <p className="infoAnswer">{birthDate}</p>
+                <p className="infoQuestion">Date of birth:</p>
+                <p className="infoAnswer">{birthDate}</p>
               </div>
             </div>
             <div className="row">
               <div className="col-md-7 col-sm-12">
-              <p className="infoQuestion">Email:</p>
-              <p className="infoAnswer">{candidateInfo.email}</p>
+                <p className="infoQuestion">Email:</p>
+                <p className="infoAnswer">{candidateInfo.email}</p>
               </div>
               <div className="col-md-5 col-sm-12">
-              <p className="infoQuestion">Education: </p>
-              <p className="infoAnswer">{candidateInfo.education}</p>
+                <p className="infoQuestion">Education: </p>
+                <p className="infoAnswer">{candidateInfo.education}</p>
               </div>
             </div>
           </div>
         </div>
         <TableReport dataReport={singleReport} interviewDate={interviewDate} />
       </div>
-      <Footer/>
+
     </Fragment>
   );
 };
