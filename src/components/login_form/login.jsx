@@ -16,7 +16,14 @@ export const LoginForm = ({ setIsLogin }) => {
   // Get email and password, save localStorage and set login to true
   const onLogin = (event) => {
     event.preventDefault();
+    if(email === "" || pass === "" ){
+      alert("Please enter a valid email and password")
+    }
+
     token(email, pass).then((tok) => {
+      if(tok === undefined){
+        alert("Please enter a valid email and password")
+      }
       localStorage.setItem("nameToken", tok);
       setIsLogin(true);
     });
@@ -37,6 +44,7 @@ export const LoginForm = ({ setIsLogin }) => {
                 placeholder="Enter email"
                 value={email}
                 onChange={takeEmail}
+                required
               />
             </div>
           </div>
@@ -52,6 +60,7 @@ export const LoginForm = ({ setIsLogin }) => {
                 placeholder="Password"
                 value={pass}
                 onChange={takePass}
+                required
               />
             </div>
           </div>
