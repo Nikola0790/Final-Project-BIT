@@ -23,7 +23,7 @@ export const token = (email, pass) => {
 export const getCandidates = async function getMeth() {
   let saveToken = localStorage.getItem("nameToken");
   return await fetch(urlCandidates, {
-    method: "GET",
+
     headers: {
       Authorization: `Bearer ${saveToken}`,
     },
@@ -36,7 +36,7 @@ export const getCandidates = async function getMeth() {
 export const getCandidate = async function getMeth(id) {
   let saveToken = localStorage.getItem("nameToken");
   return await fetch(`${urlCandidates}/${id}`, {
-    method: "GET",
+  
     headers: {
       Authorization: `Bearer ${saveToken}`,
     },
@@ -49,7 +49,7 @@ export const getCandidate = async function getMeth(id) {
 export const getReport = async function getMeth() {
   let saveToken = localStorage.getItem("nameToken");
   return await fetch(`${urlReports}`, {
-    method: "GET",
+   
     headers: {
       Authorization: `Bearer ${saveToken}`,
     },

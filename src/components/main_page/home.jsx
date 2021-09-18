@@ -6,7 +6,7 @@ import { Search } from "../partials/search_bar/searchBar";
 import { getCandidates } from "../../services/services";
 import "./home.css";
 
-const Home = ({ candidates, setCandidates }) => {
+const Home = ({ setCandidates }) => {
   const [search, setSearch] = useState("");
   const [candid, setCandid] = useState([]);
 
@@ -32,43 +32,7 @@ const Home = ({ candidates, setCandidates }) => {
   })
 
   console.log(candidateSearchTerm)
-  if (search === "") {
-    return (
-      <Fragment>
-        <Header />
-
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="row searchCandidate">
-                <div className="col-md-6 ">
-                  <p>Candidates</p>
-                </div>
-                <div className="col-md-6  search">
-                  <Search setSearch={setSearch} />
-                </div>
-                <hr />
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <hr />
-                </div>
-              </div>
-
-
-              <div className="row">
-                {setCandidates.map((candidates, index) => {
-                  return <Candidates items={candidates} key={index} />;
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-        <Footer />
-      </Fragment>
-    )
-  }
-  else {
+  
     return (
       <Fragment>
         <Header />
@@ -83,7 +47,10 @@ const Home = ({ candidates, setCandidates }) => {
                 <div className="col-md-6 search">
                   <Search setSearch={setSearch} />
                 </div>
+                
+                
               </div>
+              <hr/>
 
               <div className="row">
                 {candidateSearchTerm.map((candidates, index) => {
@@ -96,7 +63,6 @@ const Home = ({ candidates, setCandidates }) => {
         <Footer />
       </Fragment>
     )
-  }
 };
 
 export default Home;

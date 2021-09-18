@@ -4,8 +4,7 @@ import './searchBar.css';
 export const Search = ({setSearch}) => (
     <div className='search'>
         <div className="searchBox " >
-        <div className="material-icons searchIcon ">search</div>
-
+        <i className="material-icons">search</i>
         <input placeholder="Search..."
             type="text"
             className="searchInput"

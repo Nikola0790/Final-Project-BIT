@@ -25,7 +25,7 @@ export const CandidateReport = (props) => {
   }, []);
 
   let singleReport = candidateReport.filter((report) => {
-    if (idCandidate == report.candidateId) {
+    if (parseInt(idCandidate) === report.candidateId) {
       return report;
     }
   });
