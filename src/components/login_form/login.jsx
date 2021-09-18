@@ -17,7 +17,6 @@ export const LoginForm = ({ setIsLogin }) => {
   const onLogin = (event) => {
     event.preventDefault();
     token(email, pass).then((tok) => {
-      console.log(tok);
       localStorage.setItem("nameToken", tok);
       setIsLogin(true);
     });
