@@ -2,10 +2,18 @@ header{
     background-color: gray;
     color: white;
     width:100%;
+    padding:10px;
 }
+
 .navbar-brand{
     color: white!important;
     border:2px solid #B3B3B3;
     padding: 5px 10px;
-    
-}
+    float:right !important;
+} 
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .navbar-brand {
+      margin: 5px 0px;
+    }
+  }

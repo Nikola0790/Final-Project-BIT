@@ -9,21 +9,25 @@ export const Header = ({ setIsLogin }) => {
   };
   return (
     <header>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <nav className="navbar">
-              <h1>Interviews Reports</h1>
-              <Link className="navbar-brand" to="/main">
-                Candidates
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <div class="container">
+          <h1 >Interviews Reports</h1>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+              <Link to="/main" className="navbar-brand" >
+              Candidates
+            </Link>
+              <Link to="/login" className="navbar-brand" onClick={logout}>
+              Logout
               </Link>
-              <Link className="navbar-brand" to="/login" onClick={logout}>
-                Logout
-              </Link>
-            </nav>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };
