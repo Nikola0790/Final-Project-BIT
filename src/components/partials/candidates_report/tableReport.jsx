@@ -6,7 +6,7 @@ import "./tableReport.css";
 export const TableReport = ({ singleReport, interviewDate}) => {
   return (
     <Fragment>
-      <div className="container" >
+      <div className="container">
         <div className="row">
           <div className="col-12">
             <h3>Reports</h3>
@@ -26,9 +26,10 @@ export const TableReport = ({ singleReport, interviewDate}) => {
               </thead>
               <tbody>
                 {singleReport.map((item, index) => {
+
                   // getting data from singleReport
                   return (
-                    <tr >
+                    <tr key={item.id}>
                       <td>{item.companyName}</td>
                       <td>{interviewDate[index]}</td>
                       <td>{item.status}</td>
