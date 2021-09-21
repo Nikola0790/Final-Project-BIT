@@ -1,5 +1,5 @@
 import "./modal.css";
-export const Modal = ({ data, index, interviewDate }) => {
+export const Modal = ({ data, index, interviewDate}) => {
   return (
     <div className="container">
       <div className="row">

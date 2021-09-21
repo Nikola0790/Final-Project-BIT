@@ -3,10 +3,10 @@ import { Modal } from "../modal/modal";
 import "./tableReport.css";
 
 // create info table for single candidate
-export const TableReport = ({ singleReport, interviewDate }) => {
+export const TableReport = ({ singleReport, interviewDate}) => {
   return (
     <Fragment>
-      <div className="container">
+      <div className="container" >
         <div className="row">
           <div className="col-12">
             <h3>Reports</h3>
@@ -28,7 +28,7 @@ export const TableReport = ({ singleReport, interviewDate }) => {
                 {singleReport.map((item, index) => {
                   // getting data from singleReport
                   return (
-                    <tr>
+                    <tr >
                       <td>{item.companyName}</td>
                       <td>{interviewDate[index]}</td>
                       <td>{item.status}</td>
